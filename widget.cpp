@@ -3,11 +3,12 @@
 #include <QDebug>
 #include <QCursor>
 #include "line.cpp"
+#include "rectangle.h"
 
 Widget::Widget(QWidget *parent) : QWidget(parent), ui(new Ui::Widget) {
     ui->setupUi(this);
 
-    active_shape = new Line();
+    active_shape = new Rectangle();
 
     pixmap = new QPixmap(1000, 1000);
     pixmap->fill(Qt::white);
@@ -23,7 +24,7 @@ void Widget::mousePressEvent(QMouseEvent* event) {
     } else {
         active_shape->points->push_back(event->pos());
         shapes.push_back(active_shape);
-        active_shape = new Line();
+        active_shape = new Rectangle();
     }
 }
 

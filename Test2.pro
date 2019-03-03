@@ -22,12 +22,14 @@ SOURCES += \
         main.cpp \
         widget.cpp \
         line.cpp \
-    shape.cpp
+    shape.cpp \
+    rectangle.cpp
 
 HEADERS += \
         widget.h \
         shape.h \
-    line.h
+    line.h \
+    rectangle.h
 
 FORMS += \
         widget.ui
