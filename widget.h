@@ -3,6 +3,16 @@
 #include <QMouseEvent>
 #include <QPixmap>
 #include "shape.h"
+
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QLabel>
+#include <QPushButton>
+#include <QGridLayout>
+#include <QRadioButton>
+#include <QGroupBox>
+#include <QIcon>
+
 #pragma once
 
 namespace Ui {
@@ -27,4 +37,15 @@ private:
     QPainter* painter;
     QVector<Shape*> shapes;
     Shape* active_shape;
+
+    QGroupBox* radio_group, *button_group, *additional_group;
+    QRadioButton *move, *rotate;
+    QPushButton *line, *rect;
+
+    QVBoxLayout *tool_list, *instruments, *additional;
+    QHBoxLayout* h_layout;
+    QGridLayout* buttons;
+
+    QLabel *footer_test, *main_test;
+    QWidget* v_widget;
 };

@@ -2,10 +2,11 @@
 #include "ui_widget.h"
 #include <QDebug>
 #include <QCursor>
+#include <QDir>
 #include "line.cpp"
 #include "rectangle.h"
 
-Widget::Widget(QWidget *parent) : QWidget(parent), ui(new Ui::Widget) {
+Widget::Widget(QWidget *parent): QWidget(parent), ui(new Ui::Widget) {
     ui->setupUi(this);
 
     active_shape = new Rectangle();
@@ -14,6 +15,65 @@ Widget::Widget(QWidget *parent) : QWidget(parent), ui(new Ui::Widget) {
     pixmap->fill(Qt::white);
 
     this->setMouseTracking(true);
+
+    // Here is initialising the interface
+    h_layout = new QHBoxLayout();
+
+    QIcon line_icon = QIcon(QDir::currentPath() + "icons/line.png");
+    line = new QPushButton();
+    line->setIcon(line_icon);
+    line->setFixedSize(30, 30);
+
+    QIcon rect_icon = QIcon(QDir::currentPath() + "icons/rect.png");
+    rect = new QPushButton();
+    rect->setIcon(rect_icon);
+    rect->setFixedSize(30, 30);
+
+    buttons = new QGridLayout();
+    buttons->setAlignment(Qt::AlignLeft);
+    buttons->addWidget(line, 1, 2);
+    buttons->addWidget(rect, 2, 1);
+
+    button_group = new QGroupBox(" Lol, simple buttons ");
+    button_group->setLayout(buttons);
+
+    move = new QRadioButton("Move object");
+    rotate = new QRadioButton("Rotate object");
+
+    instruments = new QVBoxLayout();
+    instruments->addWidget(move);
+    instruments->addWidget(rotate);
+    instruments->addStretch(1);
+
+    radio_group = new QGroupBox(" Lol, radio buttons ");
+    radio_group->setLayout(instruments);
+
+    footer_test = new QLabel("Third");
+
+    additional = new QVBoxLayout();
+    additional->addWidget(footer_test);
+
+    additional_group = new QGroupBox(" Lol, something else ");
+    additional_group->setLayout(additional);
+
+    tool_list = new QVBoxLayout();
+    tool_list->addWidget(button_group);
+    tool_list->addWidget(radio_group);
+    tool_list->addWidget(additional_group);
+
+    // Just for fixed width of tool_list
+    // https://stackoverflow.com/a/19816024
+    v_widget = new QWidget();
+    v_widget->setLayout(tool_list);
+    v_widget->setFixedWidth(250);
+
+    main_test = new QLabel("Here is main part of window");
+
+    h_layout->addWidget(v_widget);
+    h_layout->addWidget(main_test);
+
+    setLayout(h_layout);
+    setWindowTitle(tr("Super Drawer (by @exp101t)"));
 }
 
 void Widget::mousePressEvent(QMouseEvent* event) {
@@ -51,7 +111,7 @@ void Widget::paintEvent(QPaintEvent* event) {
 }
 
 void Widget::mouseMoveEvent(QMouseEvent* event) {
-    qDebug() << "Mouse event";
+    // qDebug() << "Mouse event";
     if (active_shape->points_num == active_shape->points->length() + 1)
         update();
 }

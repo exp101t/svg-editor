@@ -1,4 +1,6 @@
 # Vector Editor
+## Some notes
+* icons directory needs to be copied in folder with program
 ## To Do
 - [ ] Key-point mechanism
 - [ ] Moving figures
