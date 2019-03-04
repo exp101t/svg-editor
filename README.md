@@ -9,10 +9,10 @@
 - [ ] Saving into project file
 - [ ] Saving into SVG format
 - [ ] Write classes for:
-      - [ ] Triangle
-      - [ ] Circle
-      - [ ] Ellipse
-      - [ ] Arc of a circle
-      - [ ] Regular polygon
-      - [ ] Parallelogram
+    - [ ] Triangle
+    - [ ] Circle
+    - [ ] Ellipse
+    - [ ] Arc of a circle
+    - [ ] Regular polygon
+    - [ ] Parallelogram
 - [ ] Merge two prototypes of draw method
