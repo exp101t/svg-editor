@@ -2,7 +2,6 @@
 #include "ui_widget.h"
 #include <QDebug>
 #include <QCursor>
-#include <QDir>
 #include "line.cpp"
 #include "rectangle.h"
 
@@ -19,12 +18,12 @@ Widget::Widget(QWidget *parent): QWidget(parent), ui(new Ui::Widget) {
     // Here is initialising the interface
     h_layout = new QHBoxLayout();
 
-    QIcon line_icon = QIcon(QDir::currentPath() + "icons/line.png");
+    QIcon line_icon = QIcon(QCoreApplication::applicationDirPath() + "/icons/line.png");
     line = new QPushButton();
     line->setIcon(line_icon);
     line->setFixedSize(30, 30);
 
-    QIcon rect_icon = QIcon(QDir::currentPath() + "icons/rect.png");
+    QIcon rect_icon = QIcon(QCoreApplication::applicationDirPath() + "/icons/rect.png");
     rect = new QPushButton();
     rect->setIcon(rect_icon);
     rect->setFixedSize(30, 30);
