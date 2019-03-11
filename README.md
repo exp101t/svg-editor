@@ -10,7 +10,7 @@
 - [ ] Saving into SVG format
 - [ ] Write classes for:
     - [X] Triangle
-    - [ ] Circle
+    - [X] Circle
     - [ ] Ellipse
     - [ ] Arc of a circle
     - [ ] Regular polygon
