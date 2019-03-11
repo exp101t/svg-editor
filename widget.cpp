@@ -2,13 +2,13 @@
 #include "ui_widget.h"
 #include <QDebug>
 #include <QCursor>
-#include "line.cpp"
-#include "rectangle.h"
+#include "figures/line.cpp"
+#include "figures/rectangle.h"
 
 Widget::Widget(QWidget *parent): QWidget(parent), ui(new Ui::Widget) {
     ui->setupUi(this);
 
-    active_shape = new Rectangle();
+    active_shape = new Line();
 
     pixmap = new QPixmap(1000, 1000);
     pixmap->fill(Qt::white);
@@ -17,6 +17,7 @@ Widget::Widget(QWidget *parent): QWidget(parent), ui(new Ui::Widget) {
 
     // Here is initialising the interface
     h_layout = new QHBoxLayout();
+    h_layout->setAlignment(Qt::AlignLeft);
 
     QIcon line_icon = QIcon(QCoreApplication::applicationDirPath() + "/icons/line.png");
     line = new QPushButton();
@@ -66,10 +67,7 @@ Widget::Widget(QWidget *parent): QWidget(parent), ui(new Ui::Widget) {
     v_widget->setLayout(tool_list);
     v_widget->setFixedWidth(250);
 
-    main_test = new QLabel("Here is main part of window");
-
     h_layout->addWidget(v_widget);
-    h_layout->addWidget(main_test);
 
     setLayout(h_layout);
     setWindowTitle(tr("Super Drawer (by @exp101t)"));
@@ -83,7 +81,7 @@ void Widget::mousePressEvent(QMouseEvent* event) {
     } else {
         active_shape->points->push_back(event->pos());
         shapes.push_back(active_shape);
-        active_shape = new Rectangle();
+        active_shape = new Line();
     }
 }
 
