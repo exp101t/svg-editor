@@ -9,7 +9,7 @@
 - [ ] Saving into project file
 - [ ] Saving into SVG format
 - [ ] Write classes for:
-    - [ ] Triangle
+    - [X] Triangle
     - [ ] Circle
     - [ ] Ellipse
     - [ ] Arc of a circle
