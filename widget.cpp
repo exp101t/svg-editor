@@ -2,15 +2,28 @@
 #include "ui_widget.h"
 #include <QDebug>
 #include <QCursor>
+
 #include "figures/Line.cpp"
-#include "figures/Rectangle.h"
-#include "figures/Triangle.h"
-#include "figures/Circle.h"
+#include "figures/Rectangle.cpp"
+#include "figures/Triangle.cpp"
+#include "figures/Circle.cpp"
+
+void Widget::set_new_active_shape() {
+    if (last_clicked == line)
+        active_shape = new Line();
+    else if (last_clicked == rect)
+        active_shape = new Rectangle();
+}
+
+void Widget::just_for_fun() {
+    last_clicked = QObject::sender();
+    set_new_active_shape();
+}
 
 Widget::Widget(QWidget *parent): QWidget(parent), ui(new Ui::Widget) {
     ui->setupUi(this);
 
-    active_shape = new Circle();
+    active_shape = new Line();
 
     pixmap = new QPixmap(1000, 1000);
     pixmap->fill(Qt::white);
@@ -73,23 +86,28 @@ Widget::Widget(QWidget *parent): QWidget(parent), ui(new Ui::Widget) {
 
     setLayout(h_layout);
     setWindowTitle(tr("Super Drawer (by @exp101t)"));
+
+    connect(line, SIGNAL(clicked()), this, SLOT(just_for_fun()));
+    connect(rect, SIGNAL(clicked()), this, SLOT(just_for_fun()));
+
+    last_clicked = line;
 }
 
 void Widget::mousePressEvent(QMouseEvent* event) {
-    qDebug() << "Widget::mousePressEvent called";
+    // qDebug() << "Widget::mousePressEvent called";
 
     if (active_shape->points_num != active_shape->points->length() + 1) {
         active_shape->points->push_back(event->pos());
     } else {
         active_shape->points->push_back(event->pos());
         shapes.push_back(active_shape);
-        active_shape = new Circle();
+        set_new_active_shape();
     }
 }
 
 // Calls when window graphics need to be updated
 void Widget::paintEvent(QPaintEvent* event) {
-    qDebug() << "Widget::paintEvent called";
+    // qDebug() << "Widget::paintEvent called";
     painter = new QPainter(this);
 
     // What the reason to use QPixmap?!

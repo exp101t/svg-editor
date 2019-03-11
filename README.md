@@ -1,11 +1,12 @@
 # Vector Editor
 ## Some notes
 * icons directory needs to be copied in folder with program
+* fix bug when drawing uncompleted but button clicked
 ## To Do
 - [ ] Key-point mechanism
 - [ ] Moving figures
 - [ ] Rotating figures
-- [ ] Selecting figures
+- [X] Selecting figures
 - [ ] Saving into project file
 - [ ] Saving into SVG format
 - [ ] Write classes for:

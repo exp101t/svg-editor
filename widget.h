@@ -48,4 +48,10 @@ private:
 
     QLabel *footer_test, *main_test;
     QWidget* v_widget;
+    QObject* last_clicked;
+
+    void set_new_active_shape();
+
+public slots:
+    void just_for_fun();
 };
