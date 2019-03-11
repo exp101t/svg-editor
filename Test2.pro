@@ -21,15 +21,15 @@ CONFIG += c++14
 SOURCES += \
         main.cpp \
         widget.cpp \
-        figures/line.cpp \
-        figures/shape.cpp \
-        figures/rectangle.cpp
+        figures/Line.cpp \
+        figures/Shape.cpp \
+        figures/Rectangle.cpp
 
 HEADERS += \
         widget.h \
-        figures/shape.h \
-        figures/line.h \
-        figures/rectangle.h
+        figures/Shape.h \
+        figures/Line.h \
+        figures/Rectangle.h
 
 FORMS += \
         widget.ui

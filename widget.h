@@ -2,7 +2,7 @@
 #include <QPaintEvent>
 #include <QMouseEvent>
 #include <QPixmap>
-#include "figures/shape.h"
+#include "figures/Shape.h"
 
 #include <QHBoxLayout>
 #include <QVBoxLayout>

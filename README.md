@@ -15,4 +15,4 @@
     - [ ] Arc of a circle
     - [ ] Regular polygon
     - [ ] Parallelogram
-- [ ] Merge two prototypes of draw method
+- [X] Merge two prototypes of draw method
